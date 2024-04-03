@@ -1,10 +1,15 @@
-﻿using AdminUser.EntityFramework;
+﻿using AdminUser.DataAccess.EntityFramework;
 
 namespace AdminUser.Repositories
 {
     public class GenericRepository<T> : IGenericDal<T> where T : class
     {
-        UserContext db = new UserContext();
+        public UserContext db;
+        public GenericRepository() 
+        {
+           db = new UserContext();
+        }
+
         public void Add(T entity)
         {
             db.Add(entity);
@@ -18,12 +23,12 @@ namespace AdminUser.Repositories
             db.SaveChanges();
         }
 
-        public List<T> GetAll()
+        public virtual List<T> GetAll()
         {
             return db.Set<T>().ToList();
         }
 
-        public T GetById(int id)
+        public virtual T GetById(int id)
         {
             return db.Set<T>().Find(id);
         }

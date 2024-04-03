@@ -4523,19 +4523,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\DELL\\.nuget\\packages\\": {}
+    "C:\\Users\\Oğuzhan\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\DELL\\source\\repos\\AdminUser\\AdminUser\\AdminUser.csproj",
+      "projectUniqueName": "C:\\Users\\Oğuzhan\\Documents\\GitHub\\EntityFramework_AdminUserControl\\AdminUser\\AdminUser.csproj",
       "projectName": "AdminUser",
-      "projectPath": "C:\\Users\\DELL\\source\\repos\\AdminUser\\AdminUser\\AdminUser.csproj",
-      "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\DELL\\source\\repos\\AdminUser\\AdminUser\\obj\\",
+      "projectPath": "C:\\Users\\Oğuzhan\\Documents\\GitHub\\EntityFramework_AdminUserControl\\AdminUser\\AdminUser.csproj",
+      "packagesPath": "C:\\Users\\Oğuzhan\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Oğuzhan\\Documents\\GitHub\\EntityFramework_AdminUserControl\\AdminUser\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Oğuzhan\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

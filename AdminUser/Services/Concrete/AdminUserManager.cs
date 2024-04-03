@@ -1,4 +1,5 @@
-﻿using AdminUser.Models;
+﻿using AdminUser.DataAccess.Abstract;
+using AdminUser.Models;
 using AdminUser.Repositories;
 using AdminUser.Services.Abstract;
 
@@ -6,36 +7,36 @@ namespace AdminUser.Services.Concrete
 {
     public class AdminUserManager : IAdminUserService
     {
-        GenericRepository<Admin> repository;
+        IAdminUserDal _adminUserDal;
         
-        public AdminUserManager()
+        public AdminUserManager(IAdminUserDal adminUserDal)
         {
-            repository = new GenericRepository<Admin>();
+            _adminUserDal=adminUserDal;
         }
 
         public void AdminAdd(Admin admin)
         {
-            repository.Add(admin);
+            _adminUserDal.Add(admin);
         }
 
         public void AdminDelete(int id)
         {
-            repository?.Delete(id);
+            _adminUserDal?.Delete(id);
         }
 
         public void AdminUpdate(Admin admin)
         {
-            repository.Update(admin);
+            _adminUserDal.Update(admin);
         }
 
         public Admin GetById(int id)
         {
-          return repository.GetById(id);
+          return _adminUserDal.GetById(id);
         }
 
         public List<Admin> GetList()
         {
-            return repository.GetAll();
+            return _adminUserDal.GetAll();
         }
     }
 }

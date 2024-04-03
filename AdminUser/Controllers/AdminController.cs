@@ -1,4 +1,6 @@
-﻿using AdminUser.Models;
+﻿using AdminUser.DataAccess.Abstract;
+using AdminUser.DataAccess.EntityFramework;
+using AdminUser.Models;
 using AdminUser.Services.Abstract;
 using AdminUser.Services.Concrete;
 using Microsoft.AspNetCore.Http;
@@ -10,7 +12,7 @@ namespace AdminUser.Controllers
     [ApiController]
     public class AdminController : ControllerBase
     {
-        AdminUserManager AdminUserService = new AdminUserManager();
+        AdminUserManager AdminUserService = new AdminUserManager( new EFAdminRepository() );
 
         [HttpGet]
         public IActionResult GetAll()
@@ -23,7 +25,7 @@ namespace AdminUser.Controllers
         public IActionResult Get(int id)
         {
             Admin admin = AdminUserService.GetById(id);
-            if (admin == null)
+            if (admin == null || admin.IsDeleted==false)
             {
                 return NotFound("Admin cannot found !");
             }

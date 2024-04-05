@@ -1,5 +1,6 @@
 ﻿using AdminUser.DataAccess.Abstract;
 using AdminUser.DataAccess.EntityFramework;
+using AdminUser.Dto.Response;
 using AdminUser.Models;
 using AdminUser.Services.Abstract;
 using AdminUser.Services.Concrete;
@@ -12,26 +13,45 @@ namespace AdminUser.Controllers
     [ApiController]
     public class AdminController : ControllerBase
     {
-        AdminUserManager AdminUserService = new AdminUserManager( new EFAdminRepository() );
+        AdminUserManager AdminUserService;
+
+        public AdminController()
+        {
+            AdminUserService = new AdminUserManager(new EFAdminRepository());
+        }
 
         [HttpGet]
         public IActionResult GetAll()
         {
-            List<Admin> admins = AdminUserService.GetList();
-            return Ok(admins);
+            List<GetAllAdminResponse> response = AdminUserService.GetList().Select(q=>new GetAllAdminResponse
+            {
+                Id = q.Id,     
+                FirstName = q.FirstName,
+                Surname = q.Surname,
+                Email = q.Email
+            }).ToList(); 
+
+            return Ok(response);
         }
 
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
             Admin admin = AdminUserService.GetById(id);
-            if (admin == null || admin.IsDeleted==false)
+
+            if (admin == null)
             {
                 return NotFound("Admin cannot found !");
             }
             else
             {
-                return Ok(admin);
+                GetUserByIdResponse response = new GetUserByIdResponse();
+                response.Id = admin.Id;
+                response.FirstName = admin.FirstName;
+                response.Surname = admin.Surname;
+                response.Email = admin.Email;
+
+                return Ok(response);
             }
         }
 

@@ -1,4 +1,5 @@
 ﻿using AdminUser.DataAccess.Abstract;
+using AdminUser.Dto.Response;
 using AdminUser.Models;
 using AdminUser.Repositories;
 using AdminUser.Services.Abstract;
@@ -31,7 +32,7 @@ namespace AdminUser.Services.Concrete
 
         public Admin GetById(int id)
         {
-          return _adminUserDal.GetById(id);
+            return _adminUserDal.GetById(id);
         }
 
         public List<Admin> GetList()
